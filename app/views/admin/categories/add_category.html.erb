@@ -1,0 +1,32 @@
+<div class="wrapper">
+		<!-- Sidebar Holder -->
+		<%=render 'partials/admin_sidebar'%>
+		<!-- Page Content Holder -->
+		<div id="content">
+			<%=render 'partials/admin_header'%>
+			<div class="row">
+				<div class="col-sm-4 col-md-6 col-xs-12">
+					<p>Add Tree to Category</p>
+				</div>
+			</div>
+			<% if flash.present?%>
+				<div class="row">
+					<div class="col-sm-4 col-md-6 col-xs-12">
+						<% if flash[:notice] %>
+							<p style="color:black;"><%=flash[:notice]%></p>
+						<%elsif flash[:alert]%>
+							<p><%=flash[:alert].html_safe%></p>
+						<%end%>
+					</div>
+				</div>
+			<%end%>
+			<div class="line"></div>
+
+			<div class="row">
+				<div class="col-sm-4 col-md-6 col-xs-12">
+					<div id="tree-container"></div>
+				</div>
+			</div>
+
+		</div>
+</div>

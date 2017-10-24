@@ -1,0 +1,45 @@
+<div class="wrapper">
+		<!-- Sidebar Holder -->
+		<%=render 'partials/admin_sidebar'%>
+		<!-- Page Content Holder -->
+		<div id="content">
+			<%=render 'partials/admin_header'%>
+			<div class="row">
+				<div class="col-sm-4 col-md-6 col-xs-12">
+					<p>Variants</p>
+				</div>
+				<div class="col-sm-4 col-md-6 col-xs-12">
+					<a class="btn-success full-float-right btn" href="<%=new_variant_path%>"><span><i class="glyphicon glyphicon-plus"></i> Add Variant</span></a>
+				</div>
+			</div>
+			<div class="line"></div>
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Display Name</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<%@variants.each do |f|%>
+								<tr>
+									<th scope="row"><%=f.id%></th>
+									<td><%=f.name%></td>
+									<td><%=f.display_name%></td>
+									<td>
+										<a data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-primary" href="<%=edit_variant_path(f)%>"><span class="glyphicon glyphicon-pencil"></span></a>
+										<a data-method="Delete" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger" href="<%=variant_path(f)%>"><span class="glyphicon glyphicon-trash"></span></a>
+									</td>
+								</tr>
+							<%end%>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+</div>

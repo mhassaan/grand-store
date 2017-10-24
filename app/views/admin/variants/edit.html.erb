@@ -1,0 +1,61 @@
+<div class="wrapper">
+		<!-- Sidebar Holder -->
+		<%=render 'partials/admin_sidebar'%>
+		<!-- Page Content Holder -->
+		<div id="content">
+			<%=render 'partials/admin_header'%>
+			<div class="row">
+				<div class="col-sm-4 col-md-6 col-xs-12">
+					<p>Edit Variant</p>
+				</div>
+			</div>
+			<% if flash.present?%>
+				<div class="row">
+					<div class="col-sm-4 col-md-6 col-xs-12">
+						<% if flash[:notice] %>
+							<p style="color:black;"><%=flash[:notice]%></p>
+						<%elsif flash[:alert]%>
+							<p><%=flash[:alert].html_safe%></p>
+						<%end%>
+					</div>
+				</div>
+			<%end%>
+			<div class="line"></div>
+			<div class="row">
+				<div class="col-sm-12">
+					<%= form_for @variant, url: variant_path(@variant), method: 'put',html:{class:'form-class'} do |f| %>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputEmail4" class="col-form-label">Name</label>
+								<%= f.text_field :name, class:'form-control',placeholder: 'display name'%>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputPassword4" class="col-form-label">Display Name</label>
+								<%= f.text_field :display_name, class:'form-control',placeholder: 'display name'%>
+							</div>
+						</div>
+						<div class="form-row" >
+							<div class="form-group col-md-12">
+								<%= f.fields_for :variant_values do |option_value|%>
+									<%=render 'variant_value_fields', f: option_value%>
+								<%end%>
+							</div>
+						</div>
+						<div class="form-group col-md-12 ">
+							<%= button_tag(type: 'submit', class: 'btn btn-success') do %>
+								<span><i class='glyphicon glyphicon-ok'></i>&nbsp;Update</span>
+							<% end %>
+							<div class="line"></div>
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-12 links">
+								<%= link_to_add_association 'Add Values',f, :variant_values,class: 'btn btn-success'%>
+							</div>
+						</div>
+					<%end%>
+				</div>
+			</div>
+
+		</div>
+</div>

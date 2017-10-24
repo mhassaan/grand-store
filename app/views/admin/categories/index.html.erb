@@ -1,0 +1,56 @@
+<div class="wrapper">
+		<!-- Sidebar Holder -->
+		<%=render 'partials/admin_sidebar'%>
+		<!-- Page Content Holder -->
+		<div id="content">
+			<%=render 'partials/admin_header'%>
+			<div class="row">
+				<div class="col-sm-4 col-md-6 col-xs-12">
+					<p>Categories</p>
+				</div>
+				<div class="col-sm-4 col-md-6 col-xs-12">
+					<a class="btn-success full-float-right btn" href="<%=new_category_path%>"><span><i class="glyphicon glyphicon-plus"></i> Add Category</span></a>
+				</div>
+			</div>
+			<% if flash.present?%>
+				<div class="row">
+					<div class="col-sm-4 col-md-6 col-xs-12">
+						<% if flash[:notice] %>
+							<p style="color:black;"><%=flash[:notice]%></p>
+						<%elsif flash[:alert]%>
+							<p><%=flash[:alert].html_safe%></p>
+						<%end%>
+					</div>
+				</div>
+			<%end%>
+			<div class="line"></div>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Title</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<%@categories.each do |f|%>
+								<tr>
+									<th scope="row"><%=f.id%></th>
+									<td><%=f.title%></td>
+									<td>
+										<a data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-primary" href="<%=edit_category_path(f)%>"><span class="glyphicon glyphicon-pencil"></span></a>
+										<a data-method="Delete" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger" href="<%=category_path(f)%>"><span class="glyphicon glyphicon-trash"></span></a>
+										<!-- <a data-id="<%=f.id%>" id="add_category" data-toggle="tooltip" data-placement="top" title="Cateogry" class="btn btn-plus"><span class="glyphicon glyphicon-trash"></span></a> -->
+									</td>
+								</tr>
+							<%end%>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+</div>

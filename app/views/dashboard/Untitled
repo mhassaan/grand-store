@@ -1,0 +1,17 @@
+<%= form_for @variant, url: variants_path, method: 'post',{class:'form-class'}do |f| %>
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label for="inputEmail4" class="col-form-label">Name</label>
+			<%= f.input_field :name, class:'form-control',placeholder: 'display name'%>
+		</div>
+		<div class="form-group col-md-6">
+			<label for="inputPassword4" class="col-form-label">Display Name</label>
+			<%= f.input_field :display_name, class:'form-control',placeholder: 'display name'%>
+		</div>
+	</div>
+	<div class="form-group col-md-6">
+		<%= button_tag(type: 'submit', class: 'btn btn-success') do %>
+			<span><i class='glyphicon glyphicon-ok'></i>Create</span>
+		<% end %>
+	</div>
+<%end%>

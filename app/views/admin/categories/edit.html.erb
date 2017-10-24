@@ -1,0 +1,42 @@
+<div class="wrapper">
+		<!-- Sidebar Holder -->
+		<%=render 'partials/admin_sidebar'%>
+		<!-- Page Content Holder -->
+		<div id="content">
+			<%=render 'partials/admin_header'%>
+			<div class="row">
+				<div class="col-sm-4 col-md-6 col-xs-12">
+					<p>Update Category</p>
+				</div>
+			</div>
+			<div class="line"></div>
+			<%= form_for @category,html:{class:'category-form form-class'} do |f| %>
+				<div class="row">
+					<div class="col-sm-12">
+							<div class="form-row">
+								<div class="form-group col-md-6 col-xs-12 col-sm-4">
+									<label for="inputEmail4" class="col-form-label">Title</label>
+									<%= f.text_field :title, class:'form-control',placeholder: 'display name'%>
+								</div>
+							</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<%= button_tag(type: 'submit', class: 'category-submit-btn btn btn-success') do %>
+									<span><i class='glyphicon glyphicon-ok'></i>&nbsp;Update</span>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 col-md-6 col-xs-12">
+						<div id="tree-container"></div>
+					</div>
+				</div>
+			<%end%>
+		</div>
+</div>
